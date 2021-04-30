@@ -1,9 +1,9 @@
 $bg-color: #111111
-$text-color: #efefef
+$text-color: #ffffff
 
 body
   background: $bg-color
-  font-family: 'Inter', sans-serif
+  font-family: 'Source Sans Pro', sans-serif
   font-size: 16px
   text-align: center
   color: $text-color
@@ -11,9 +11,29 @@ body
   *
     box-sizing: border-box
 
+  h1, h2, h3, h4, h5, h6
+    font-family: 'Playfair Display', sans-serif
+    font-weight: 700
+    margin: 0
+
+  a
+    color: $text-color
+    text-decoration: none
+
 .carousel
+  position: relative
   width: 600px
   margin: 0 auto
+
+  &:before
+    position: absolute
+    content: ''
+    border: 2px $text-color solid
+    left: 25px
+    right: 25px
+    top: 25px
+    bottom: 25px
+    z-index: 1
 
   .carousel-wrapper
     overflow: hidden
@@ -23,8 +43,51 @@ body
       transition: all .2s ease-in-out
 
       .carousel-item
+        position: relative
         min-width: 100%
         height: 400px
+        text-align: left
+
+        .item-img
+          position: relative
+          width: 100%
+          height: 100%
+          object-fit: cover
+
+        .item-content
+          position: absolute
+          background: rgba(0, 0, 0, .6)
+          top: 0
+          bottom: 0
+          left: 0
+          right: 0
+          padding: 42px
+
+          .item-title
+            font-size: 2.2em
+            margin: 0
+
+          .item-desc
+            font-size: 1.2em
+            margin-top: 8px
+            color: #ccc
+
+          .item-link
+            position: absolute
+            background: #fff
+            display: flex
+            align-items: center
+            left: 25px
+            bottom: 25px
+            padding: 10px 17px
+
+            .link-title
+              text-transform: uppercase
+              margin-right: 6px
+              color: #111
+            
+            .link-icon
+              color: #111
 
         &:nth-child(1n)
           background: tomato
@@ -32,3 +95,22 @@ body
           background: yellowgreen
         &:nth-child(3n)
           background: forestgreen
+
+  .carousel-controls
+    position: absolute
+    display: flex
+    bottom: 0
+    right: 0
+    z-index: 2
+
+    .carousel-btn
+      width: 50px
+      height: 50px
+      background: $text-color
+      border: none
+      border-radius: 0
+      padding: 0
+      cursor: pointer
+
+      .btn-icon
+        margin: auto auto
