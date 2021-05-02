@@ -78,6 +78,7 @@ body
           position: relative
           background: rgba(0, 0, 0, .6)
           border: 2px $light-text-color solid
+          height: calc(100% - 35px)
           margin: 15px
           padding: 42px
 
@@ -95,13 +96,25 @@ body
           .item-link
             position: absolute
             background: $light-text-color
+            border: 2px $light-text-color solid
+            border-width: 0
             display: flex
             align-items: center
             flex-wrap: nowrap
             max-width: 0
-            left: 0
-            bottom: 0
+            left: -2px
+            bottom: -2px
             overflow: hidden
+            transition: all .3s ease-in-out
+
+            &:hover
+              background: none
+              
+              .link-title, .link-icon
+                color: $light-text-color
+
+            &:active
+              background: rgba(255, 255, 255, .3)
 
             .link-title
               margin-right: 6px
@@ -159,22 +172,26 @@ body
 
 @keyframes link-slide-right
   0%
+    border-width: 0
     max-width: 0
     padding: 8px 0
     opacity: 0
 
   100%
+    border-width: 2px
     max-width: 200px
     padding: 8px 42px
     opacity: 1
     
 @keyframes link-slide-left
   0%
+    border-width: 2px
     max-width: 200px
     padding: 8px 42px
     opacity: 1
 
   100%
+    border-width: 0
     max-width: 0
     padding: 8px 0
     opacity: 0
