@@ -25,7 +25,7 @@ body
 
 .carousel
   position: relative
-  width: 600px
+  max-width: 600px
   margin: 0 auto
 
   .carousel-wrapper
@@ -38,7 +38,6 @@ body
       .carousel-item
         position: relative
         min-width: 100%
-        height: 400px
         text-align: left
 
         &.active
@@ -70,19 +69,16 @@ body
               animation-fill-mode: forwards
 
         .item-img
-          position: relative
+          position: absolute
           width: 100%
           height: 100%
           object-fit: cover
 
         .item-content
-          position: absolute
+          position: relative
           background: rgba(0, 0, 0, .6)
           border: 2px $light-text-color solid
-          top: 15px
-          bottom: 15px
-          left: 15px
-          right: 15px
+          margin: 15px
           padding: 42px
 
           .item-title
@@ -182,3 +178,18 @@ body
     max-width: 0
     padding: 8px 0
     opacity: 0
+
+@media (max-width: 425px)
+  .carousel
+    .carousel-item
+      padding-bottom: 25px
+
+      .item-content
+        padding: 16px !important
+        padding-bottom: 42px !important
+    
+    .carousel-controls
+      justify-content: center
+      left: 0
+      right: 0
+      bottom: -25px
