@@ -31,7 +31,7 @@ const Carousel = () => {
       <div className="carousel-wrapper">
         <div className="carousel-track" style={{ transform: `translateX(${ -step * 100 }%)` }}>
           { slides.map(slide => (
-            <Slide title={ slide.title } desc={ slide.desc } image={ slide.image } />
+            <Slide key={ slide.id } className={ step === slide.id - 1 ? 'active' : 'inactive' } title={ slide.title } desc={ slide.desc } image={ slide.image } />
           )) }
         </div>
       </div>

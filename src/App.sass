@@ -1,4 +1,5 @@
 $bg-color: #111111
+$primary-color: #007aff
 $light-text-color: #ffffff
 $dark-text-color: #111111
 $secondary-text-color: #cccccc
@@ -32,13 +33,41 @@ body
 
     .carousel-track
       display: flex
-      transition: all .2s ease-in-out
+      transition: all .3s ease-in-out
 
       .carousel-item
         position: relative
         min-width: 100%
         height: 400px
         text-align: left
+
+        &.active
+          .item-content
+            .item-title
+              animation: .6s ease-in-out slide-up
+              animation-fill-mode: forwards
+
+            .item-desc
+              animation: .6s ease-in-out .3s slide-up
+              animation-fill-mode: forwards
+
+            .item-link
+              animation: .6s ease-in-out .6s link-slide-right
+              animation-fill-mode: forwards
+
+        &.inactive
+          .item-content
+            .item-title
+              animation: .6s ease-in-out slide-down
+              animation-fill-mode: forwards
+
+            .item-desc
+              animation: .6s ease-in-out slide-down
+              animation-fill-mode: forwards
+
+            .item-link
+              animation: .6s ease-in-out link-slide-left
+              animation-fill-mode: forwards
 
         .item-img
           position: relative
@@ -59,27 +88,33 @@ body
           .item-title
             font-size: 2.2em
             margin: 0
+            opacity: 0
 
           .item-desc
             font-size: 1.2em
             margin-top: 8px
             color: $secondary-text-color
+            opacity: 0
 
           .item-link
             position: absolute
             background: $light-text-color
             display: flex
             align-items: center
+            flex-wrap: nowrap
+            max-width: 0
             left: 0
             bottom: 0
-            padding: 8px 42px
+            overflow: hidden
 
             .link-title
               margin-right: 6px
               text-transform: uppercase
+              white-space: nowrap
               color: $dark-text-color
             
             .link-icon
+              flex-shrink: 0
               color: $dark-text-color
 
   .carousel-controls
@@ -97,6 +132,53 @@ body
       border-radius: 0
       padding: 0
       cursor: pointer
+      transition: all .1s ease-in-out
+
+      &:active
+        background: $secondary-text-color
+        
+        .btn-icon
+          width: 1.2em
 
       .btn-icon
+        width: 2em
         margin: auto auto
+        transition: all .1s ease-in-out
+
+@keyframes slide-up
+  0%
+    opacity: 0
+    transform: translateY(100px)
+  100%
+    opacity: 1
+    transform: translateY(0)
+    
+@keyframes slide-down
+  0%
+    opacity: 1
+    transform: translateY(0)
+  100%
+    opacity: 0
+    transform: translateY(100px)
+
+@keyframes link-slide-right
+  0%
+    max-width: 0
+    padding: 8px 0
+    opacity: 0
+
+  100%
+    max-width: 200px
+    padding: 8px 42px
+    opacity: 1
+    
+@keyframes link-slide-left
+  0%
+    max-width: 200px
+    padding: 8px 42px
+    opacity: 1
+
+  100%
+    max-width: 0
+    padding: 8px 0
+    opacity: 0
