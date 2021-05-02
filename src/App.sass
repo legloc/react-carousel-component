@@ -1,12 +1,14 @@
 $bg-color: #111111
-$text-color: #ffffff
+$light-text-color: #ffffff
+$dark-text-color: #111111
+$secondary-text-color: #cccccc
 
 body
   background: $bg-color
   font-family: 'Source Sans Pro', sans-serif
   font-size: 16px
   text-align: center
-  color: $text-color
+  color: $light-text-color
 
   *
     box-sizing: border-box
@@ -17,23 +19,13 @@ body
     margin: 0
 
   a
-    color: $text-color
+    color: $light-text-color
     text-decoration: none
 
 .carousel
   position: relative
   width: 600px
   margin: 0 auto
-
-  &:before
-    position: absolute
-    content: ''
-    border: 2px $text-color solid
-    left: 25px
-    right: 25px
-    top: 25px
-    bottom: 25px
-    z-index: 1
 
   .carousel-wrapper
     overflow: hidden
@@ -57,10 +49,11 @@ body
         .item-content
           position: absolute
           background: rgba(0, 0, 0, .6)
-          top: 0
-          bottom: 0
-          left: 0
-          right: 0
+          border: 2px $light-text-color solid
+          top: 15px
+          bottom: 15px
+          left: 15px
+          right: 15px
           padding: 42px
 
           .item-title
@@ -70,31 +63,24 @@ body
           .item-desc
             font-size: 1.2em
             margin-top: 8px
-            color: #ccc
+            color: $secondary-text-color
 
           .item-link
             position: absolute
-            background: #fff
+            background: $light-text-color
             display: flex
             align-items: center
-            left: 25px
-            bottom: 25px
-            padding: 10px 17px
+            left: 0
+            bottom: 0
+            padding: 8px 42px
 
             .link-title
-              text-transform: uppercase
               margin-right: 6px
-              color: #111
+              text-transform: uppercase
+              color: $dark-text-color
             
             .link-icon
-              color: #111
-
-        &:nth-child(1n)
-          background: tomato
-        &:nth-child(2n)
-          background: yellowgreen
-        &:nth-child(3n)
-          background: forestgreen
+              color: $dark-text-color
 
   .carousel-controls
     position: absolute
@@ -106,7 +92,7 @@ body
     .carousel-btn
       width: 50px
       height: 50px
-      background: $text-color
+      background: $light-text-color
       border: none
       border-radius: 0
       padding: 0
