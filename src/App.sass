@@ -68,19 +68,36 @@ body
               animation: .6s ease-in-out link-slide-left
               animation-fill-mode: forwards
 
+        &.hovered
+          .item-img
+            transform: scale(1.1)
+
+          .item-content
+            border-color: $primary-color
+
+            .item-link
+              background: $primary-color
+              border-color: $primary-color
+              
+              .link-title, .link-icon
+                color: $light-text-color
+
         .item-img
           position: absolute
           width: 100%
           height: 100%
           object-fit: cover
+          transition: all .3s ease-in-out
+          transform-origin: bottom left
 
         .item-content
           position: relative
           background: rgba(0, 0, 0, .6)
           border: 2px $light-text-color solid
-          height: calc(100% - 35px)
+          height: calc(100% - 38px)
           margin: 15px
           padding: 42px
+          transition: all .3s ease-in-out
 
           .item-title
             font-size: 2.2em
@@ -106,16 +123,7 @@ body
             bottom: -2px
             overflow: hidden
             transition: all .3s ease-in-out
-
-            &:hover
-              background: none
-              
-              .link-title, .link-icon
-                color: $light-text-color
-
-            &:active
-              background: rgba(255, 255, 255, .3)
-
+            
             .link-title
               margin-right: 6px
               text-transform: uppercase
@@ -132,6 +140,22 @@ body
     bottom: 0
     right: 0
     z-index: 2
+
+    &:before
+      position: absolute
+      content: ''
+      border-top: 2px transparent solid
+      border-left: 2px transparent solid
+      height: 50%
+      top: -2px
+      left: -2px
+      right: 17px
+      transition: all .3s ease-in-out
+      pointer-events: none
+
+    &.hovered
+      &:before
+        border-color: $primary-color
 
     .carousel-btn
       width: 50px
@@ -210,3 +234,6 @@ body
       left: 0
       right: 0
       bottom: -25px
+
+      &:before
+        border: none
